@@ -1,0 +1,49 @@
+// https://prometheus.io/download/ = Download prometheus
+# Start Prometheus (if not using a service manager)
+./prometheus --config.file=prometheus.yml
+
+# Stop Prometheus (if running manually)
+# Use Ctrl+C to stop it or find the PID and kill it
+kill -SIGINT <PID>
+
+# Check Prometheus Status (if using systemd)
+systemctl status prometheus
+
+# Enable Prometheus to Start on Boot
+systemctl enable prometheus
+
+# Start Prometheus as a Service
+systemctl start prometheus
+
+# Stop Prometheus as a Service
+systemctl stop prometheus
+
+# Restart Prometheus as a Service
+systemctl restart prometheus
+
+# Reload Prometheus Configuration
+systemctl reload prometheus
+
+# View Prometheus Logs
+journalctl -u prometheus
+
+# Access the Prometheus Web UI
+# Open a web browser and go to:
+http://<your-server-ip>:9090
+
+# Export Metrics
+# To export metrics to a specified endpoint
+curl http://<your-server-ip>:9090/api/v1/query?query=<metric_name>
+
+# Check Health Status
+curl http://<your-server-ip>:9090/-/health
+
+# Check Readiness Status
+curl http://<your-server-ip>:9090/-/ready
+
+# Dump Configuration
+curl http://<your-server-ip>:9090/api/v1/status/config
+
+# Check Current Targets
+curl http://<your-server-ip>:9090/api/v1/targets
+
